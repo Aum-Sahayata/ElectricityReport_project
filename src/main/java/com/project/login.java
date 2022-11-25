@@ -1,11 +1,16 @@
 package com.project;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import  java.sql.ResultSet;
 import java.util.Scanner;
 
 public class login {
 
-    public static int ID;
+    static int ID;
+    static char loginType='u';
     
     public static void loginChoice(){
         Scanner in = new Scanner(System.in);
@@ -60,6 +65,7 @@ public class login {
             if(rs.next()){
                 System.out.println("==Loged in!!==\n");
                 ID=rs.getInt(1);
+                loginType='u';
             }
             else{
                 System.out.println("==Incorrect Phone number or password==\n (Register first if haven't already registered)\n");
@@ -90,6 +96,7 @@ public class login {
             if(rs.next()){
                 System.out.println("==Loged in!!==\n");
                 ID=rs.getInt(1);
+                loginType='a';
             }
             else{
                 System.out.println("==Incorrect Phone number or password==\n");
