@@ -9,21 +9,23 @@ import java.util.Scanner;
 
 public class login {
 
+    public static final String RESET = "\033[0m";
+    public static final String RED = "\033[31m";
+    public static final String CYAN = "\033[46m";
+
     static int ID;
-    static char loginType='u';
+    static char loginType;
     
     public static void loginChoice(){
         Scanner in = new Scanner(System.in);
         
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("");
-        System.out.println("1.User Login");
-        System.out.println("2.User Register");
+        System.out.println("\n"+CYAN+"---------------------------------------------------------------------"+RESET+"\n");
+        System.out.println(RED+"1"+RESET+".User Login");
+        System.out.println(RED+"2"+RESET+".User Register");
         System.out.println("--------------------------------------");
-        System.out.println("3.Admin Login");
-        System.out.println("4.Admin Register");
-        System.out.println("");
-        System.out.println("---------------------------------------------------------------------");
+        System.out.println(RED+"3"+RESET+".Admin Login");
+        System.out.println(RED+"4"+RESET+".Admin Register\n");
+        System.out.println(CYAN+"---------------------------------------------------------------------"+RESET);
         System.out.println("");
         
         System.out.print("Enter your choice: ");
@@ -46,7 +48,7 @@ public class login {
             adminReg();
             break;
         }
-        in.close();
+        
     }
     
     static void userLogin(){
@@ -57,26 +59,26 @@ public class login {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
             Statement stm = con.createStatement();
             System.out.println("\n------------------------------User Login------------------------------\n");
-            System.out.println("\nEnter your phone number:");
+            System.out.print("\nEnter your phone number: ");
             Long phoneNo = in.nextLong();
-            System.out.println("\nEnter your Password:");
+            System.out.print("\nEnter your Password: ");
             String passwd = in.next();
             ResultSet rs = stm.executeQuery("select id from user where phone_no="+phoneNo+" and password='"+passwd+"'");
             if(rs.next()){
-                System.out.println("==Loged in!!==\n");
+                System.out.println("\n===========Logged in===========\n");
                 ID=rs.getInt(1);
                 loginType='u';
             }
             else{
-                System.out.println("==Incorrect Phone number or password==\n (Register first if haven't already registered)\n");
+                System.out.println("\n"+RED+"======Incorrect Phone number or password======\n"+RESET+"(Register first if haven't already registered)\n");
             }
-            System.out.println("---------------------------------------------------------------------");
+            System.out.println("---------------------------------------------------------------------\n\n");
             con.close();
         }
         catch(Exception e){
             System.out.println(e);
         }
-        in.close();
+        
     }
 
     static void adminLogin(){
@@ -107,7 +109,7 @@ public class login {
         catch(Exception e){
             System.out.println(e);
         }
-        in.close();
+        
     }
 
     static void userReg(){
@@ -125,7 +127,7 @@ public class login {
         String addr = in.nextLine();
         System.out.println("\n==========You are now registered.==========");
         System.out.println("\n---------------------------------------------------------------------");
-        in.close();
+        
         
 
         try {
@@ -157,7 +159,7 @@ public class login {
         long phoneno = in.nextLong();
         System.out.println("\n==========You are now registered.==========");
         System.out.println("\n---------------------------------------------------------------------");
-        in.close();
+        
 
 
         try {
