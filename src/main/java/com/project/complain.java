@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.*;
+import java.util.Scanner;
 
 
 public class complain {
@@ -20,7 +20,7 @@ public class complain {
 
     static int ID;
     
-    public static void action(int id){
+    static void action(int id){
         Scanner in = new Scanner(System.in);
         ID = id;
         
@@ -49,11 +49,11 @@ public class complain {
             case 3:
             stopper=false;
             break;
-        }
+            }
         }
     }
     
-    static void newcomp(){
+    private static void newcomp(){
         Scanner in = new Scanner(System.in);
         System.out.println("\n------------------------------New Complaint------------------------------\n");
         System.out.println("\nNote:Your contact information will be take from your account.");
@@ -83,7 +83,7 @@ public class complain {
         }
     }
     
-    static void status(){
+    private static void status(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
@@ -105,7 +105,7 @@ public class complain {
                     else if(rs.getString(3).equals("U")){
                         System.out.println(BLUE+"Status: "+YELLOW+rs.getString(3));
                     }
-                    if(rs.getString(3).equals("D")){
+                    else if(rs.getString(3).equals("D")){
                         System.out.println(BLUE+"Status: "+GREEN+rs.getString(3));
                     }
                     System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);

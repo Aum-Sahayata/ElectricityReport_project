@@ -11,21 +11,21 @@ public class login {
 
     public static final String RESET = "\033[0m";
     public static final String RED = "\033[31m";
-    public static final String CYAN = "\033[46m";
+    public static final String CYAN_BG = "\033[46m";
 
     static int ID;
-    static char loginType;
+    static char loginType='a';
     
-    public static void loginChoice(){
+    static void loginChoice(){
         Scanner in = new Scanner(System.in);
         
-        System.out.println("\n"+CYAN+"---------------------------------------------------------------------"+RESET+"\n");
+        System.out.println("\n"+CYAN_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.println(RED+"1"+RESET+".User Login");
         System.out.println(RED+"2"+RESET+".User Register");
         System.out.println("--------------------------------------");
         System.out.println(RED+"3"+RESET+".Admin Login");
         System.out.println(RED+"4"+RESET+".Admin Register\n");
-        System.out.println(CYAN+"---------------------------------------------------------------------"+RESET);
+        System.out.println(CYAN_BG+"---------------------------------------------------------------------"+RESET);
         System.out.println("");
         
         System.out.print("Enter your choice: ");
@@ -51,7 +51,7 @@ public class login {
         
     }
     
-    static void userLogin(){
+    private static void userLogin(){
         Scanner in = new Scanner(System.in);
 
         try{
@@ -81,7 +81,7 @@ public class login {
         
     }
 
-    static void adminLogin(){
+    private static void adminLogin(){
         Scanner in = new Scanner(System.in);
         
         try{
@@ -112,7 +112,7 @@ public class login {
         
     }
 
-    static void userReg(){
+    private static void userReg(){
         Scanner in = new Scanner(System.in);
 
         System.out.println("\n----------------------------User Registration----------------------------\n");
@@ -147,7 +147,7 @@ public class login {
         }
     }
 
-    static void adminReg(){
+    private static void adminReg(){
         Scanner in = new Scanner(System.in);
 
         System.out.println("\n----------------------------Admin Registration----------------------------\n");
