@@ -14,6 +14,7 @@ public class complain {
     public static final String RED = "\u001B[31m";
     public static final String YELLOW = "\u001B[33m";
     public static final String GREEN = "\u001B[32m";
+    public static final String GREEN_BG = "\u001B[42m";
     public static final String BLUE= "\u001B[34m";
     public static final String BLUE_BG= "\u001B[44m";
     public static final String WHITE_BG = "\u001B[47m";
@@ -25,7 +26,6 @@ public class complain {
         ID = id;
         
         Boolean stopper = true;
-        
         
         while(stopper){
 
@@ -55,15 +55,15 @@ public class complain {
     
     private static void newcomp(){
         Scanner in = new Scanner(System.in);
-        System.out.println("\n------------------------------New Complaint------------------------------\n");
+        System.out.println("\n"+GREEN_BG+"------------------------------New Complaint------------------------------\n"+RESET);
         System.out.println("\nNote:Your contact information will be take from your account.");
-        System.out.println("\nSubject/Title:");
+        System.out.println("\n"+RED+"Subject/Title:"+RESET);
         String subject = in.nextLine();
-        System.out.println("\nDescribe your problem:");
+        System.out.println("\n"+RED+"Describe your problem:"+RESET);
         String detail = in.nextLine();
-        System.out.println("\nAddress/Location:");
+        System.out.println("\n"+RED+"Address/Location:"+RESET);
         String addr = in.nextLine();
-        System.out.println("\n---------------------------------------------------------------------");
+        System.out.println("\n"+GREEN_BG+"---------------------------------------------------------------------"+RESET);
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -77,7 +77,7 @@ public class complain {
             pstm.executeUpdate();
             con.close();
             System.out.println("\nNew complaint registered you can check status from your account.");
-            System.out.println("\n---------------------------------------------------------------------");
+            System.out.println("\n---------------------------------------------------------------------\n");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -109,7 +109,6 @@ public class complain {
                         System.out.println(BLUE+"Status: "+GREEN+rs.getString(3));
                     }
                     System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
-
                 } while (rs.next());
             }
             con.close();

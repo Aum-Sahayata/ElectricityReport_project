@@ -10,8 +10,10 @@ public class manage {
 
     public static final String RESET = "\033[0m";
     public static final String BLUE= "\u001B[34m";
+    public static final String BLUE_BG= "\u001B[44m";
     public static final String RED = "\u001B[31m";
     public static final String YELLOW = "\u001B[33m";
+    public static final String YELLOW_BG = "\u001B[43m";
     public static final String GREEN = "\u001B[32m";
     public static final String RED_BG = "\u001B[41m";
     public static final String WHITE_BG = "\u001B[47m";
@@ -20,36 +22,42 @@ public class manage {
 
         Scanner in = new Scanner(System.in);
 
-        System.out.println("\n"+RED_BG+"---------------------------------------------------------------------\n"+RESET);
-            System.out.println(BLUE+"1"+RESET+".Show all complaints");
-            System.out.println(BLUE+"2"+RESET+".Show all unassigned complaints");
-            System.out.println(BLUE+"3"+RESET+".Show all complaints being resolved");
-            System.out.println(BLUE+"4"+RESET+".Show all resolved complaints");
-            System.out.println(BLUE+"5"+RESET+".Exit");
-            System.out.println("\n"+RED_BG+"---------------------------------------------------------------------"+RESET);
+        Boolean stopper = true;
 
-            System.out.print("\nEnter your choice: ");
-            int choice = in.nextInt();
-            switch (choice) {
-            case 1:
-            showall();
-            break;
-            
-            case 2:
-            showN();
-            break;
+        while(stopper){
 
-            case 3:
-            showU();
-            break;
+                System.out.println("\n"+RED_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println(BLUE+"1"+RESET+".Show all complaints");
+                System.out.println(BLUE+"2"+RESET+".Show all unassigned complaints");
+                System.out.println(BLUE+"3"+RESET+".Show all complaints being resolved");
+                System.out.println(BLUE+"4"+RESET+".Show all resolved complaints");
+                System.out.println(BLUE+"5"+RESET+".Exit");
+                System.out.println("\n"+RED_BG+"---------------------------------------------------------------------"+RESET);
 
-            case 4:
-            showD();
-            break;
+                System.out.print("\nEnter your choice: ");
+                int choice = in.nextInt();
+                switch (choice) {
+                case 1:
+                showall();
+                break;
+                
+                case 2:
+                showN();
+                break;
 
-            case 5:
-            break;
-        }
+                case 3:
+                showU();
+                break;
+
+                case 4:
+                showD();
+                break;
+
+                case 5:
+                stopper=false;
+                break;
+            }
+    }
     }
 
 
@@ -87,6 +95,7 @@ public class manage {
     
     
     private static void showN() {
+        Scanner in = new Scanner(System.in);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
@@ -101,17 +110,36 @@ public class manage {
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
                     System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
                     System.out.println(BLUE+"Status: "+RED+rs.getString(4));
-                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n\n"+RESET);
                 } while (rs.next());
             }
             con.close();
         }catch(Exception e){
             System.out.println(e);
         }
+
+        System.out.println(BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println(YELLOW+"1"+RESET+".Edit status");
+        System.out.println(YELLOW+"2"+RESET+".Exit");
+        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.print("\nEnter your choice: ");
+        int choice = in.nextInt();
+
+        switch (choice) {
+            case 1:
+            editstatus();
+            break;
+            
+            case 2:
+            break;
+        }
     }
+
     
     
     private static void showU() {
+    Scanner in = new Scanner(System.in);    
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
@@ -133,10 +161,26 @@ public class manage {
         }catch(Exception e){
             System.out.println(e);
         }
+
+        System.out.println(BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println(YELLOW+"1"+RESET+".Edit status");
+        System.out.println(YELLOW+"2"+RESET+".Exit");
+        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.print("\nEnter your choice: ");
+        int choice = in.nextInt();
+
+        switch (choice) {
+            case 1:
+            editstatus();
+            break;
+            
+            case 2:
+            break;
+        }
     }
     
-    
     private static void showD() {
+        Scanner in = new Scanner(System.in); 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
@@ -155,6 +199,66 @@ public class manage {
                 } while (rs.next());
             }
             con.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+
+        System.out.println(BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println(YELLOW+"1"+RESET+".Edit status");
+        System.out.println(YELLOW+"2"+RESET+".Exit");
+        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.print("\nEnter your choice: ");
+        int choice = in.nextInt();
+
+        switch (choice) {
+            case 1:
+            editstatus();
+            break;
+            
+            case 2:
+            break;
+        }
+    }
+
+    private static void editstatus() {try {
+        int id;
+        Scanner in = new Scanner(System.in);
+        System.out.println(YELLOW_BG+"\n---------------------------------------------------------------------\n"+RESET);
+        System.out.print("Enter ID of complaint: ");
+        id = in.nextInt();
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
+        Statement stm = con.createStatement();
+        ResultSet rs = stm.executeQuery("select subject,details,status from complaint where id="+id);
+        if (rs.next() == false) {
+            System.out.println("You entered incorrect ID.");
+        } else {
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println(BLUE+"Subject: "+RESET+rs.getString(1));
+                System.out.println(BLUE+"Details: "+RESET+rs.getString(2));
+                if(rs.getString(3).equals("N")){
+                    System.out.println(BLUE+"Status: "+RED+rs.getString(3));
+                }
+                else if(rs.getString(3).equals("U")){
+                    System.out.println(BLUE+"Status: "+YELLOW+rs.getString(3));
+                }
+                else if(rs.getString(3).equals("D")){
+                    System.out.println(BLUE+"Status: "+GREEN+rs.getString(3));
+                }
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+            }
+            
+            System.out.println(RED+"N"+RESET+" - means your complaint is not yet assigned to anyone (Please be patient)");
+            System.out.println(YELLOW+"U"+RESET+" - means your complaint is being resloved");
+            System.out.println(GREEN+"D"+RESET+" - means your complaint resloved\n\n");
+            System.out.print("Change status to: ");
+            String stat = in.next();
+            String update = "update complaint set status='"+stat+"' where id="+id;
+
+            stm.executeUpdate(update);
+        con.close();
+        System.out.println("\n"+YELLOW_BG+"---------------------------------------------------------------------\n"+RESET);
         }catch(Exception e){
             System.out.println(e);
         }
