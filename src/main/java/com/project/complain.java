@@ -29,7 +29,7 @@ public class complain {
         
         while(stopper){
 
-            System.out.println(BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+            System.out.println(BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
             System.out.println(YELLOW+"1"+RESET+".Register a new complaint");
             System.out.println(YELLOW+"2"+RESET+".Check status of previous complaints");
             System.out.println(YELLOW+"3"+RESET+".Exit");
@@ -55,7 +55,7 @@ public class complain {
     
     private static void newcomp(){
         Scanner in = new Scanner(System.in);
-        System.out.println("\n"+GREEN_BG+"------------------------------New Complaint------------------------------\n"+RESET);
+        System.out.println("\n"+GREEN_BG+"------------------------------New Complaint------------------------------"+RESET+"\n");
         System.out.println("\nNote:Your contact information will be take from your account.");
         System.out.println("\n"+RED+"Subject/Title:"+RESET);
         String subject = in.nextLine();
@@ -92,7 +92,7 @@ public class complain {
             if (rs.next() == false) {
                 System.out.println("You do not have any complaints.");
             } else {
-                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 System.out.println(RED+"N"+RESET+" - means your complaint is not yet assigned to anyone (Please be patient)");
                 System.out.println(YELLOW+"U"+RESET+" - means your complaint is being resloved");
                 System.out.println(GREEN+"D"+RESET+" - means your complaint resloved\n\n");
@@ -100,15 +100,15 @@ public class complain {
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Details: "+RESET+rs.getString(2));
                     if(rs.getString(3).equals("N")){
-                        System.out.println(BLUE+"Status: "+RED+rs.getString(3));
+                        System.out.println(BLUE+"Status: "+RED+rs.getString(3)+RESET);
                     }
                     else if(rs.getString(3).equals("U")){
-                        System.out.println(BLUE+"Status: "+YELLOW+rs.getString(3));
+                        System.out.println(BLUE+"Status: "+YELLOW+rs.getString(3)+RESET);
                     }
                     else if(rs.getString(3).equals("D")){
-                        System.out.println(BLUE+"Status: "+GREEN+rs.getString(3));
+                        System.out.println(BLUE+"Status: "+GREEN+rs.getString(3)+RESET);
                     }
-                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
             }
             con.close();

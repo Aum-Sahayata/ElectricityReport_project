@@ -26,7 +26,7 @@ public class manage {
 
         while(stopper){
 
-                System.out.println("\n"+RED_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println("\n"+RED_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 System.out.println(BLUE+"1"+RESET+".Show all complaints");
                 System.out.println(BLUE+"2"+RESET+".Show all unassigned complaints");
                 System.out.println(BLUE+"3"+RESET+".Show all complaints being resolved");
@@ -70,21 +70,21 @@ public class manage {
             if (rs.next() == false) {
                 System.out.println("There are no complaints");
             } else {
-                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 do {
                     System.out.println(BLUE+"ID: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
                     System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
                     if(rs.getString(4).equals("N")){
-                        System.out.println(BLUE+"Status: "+RED+rs.getString(4));
+                        System.out.println(BLUE+"Status: "+RED+rs.getString(4)+RESET);
                     }
                     else if(rs.getString(4).equals("U")){
-                        System.out.println(BLUE+"Status: "+YELLOW+rs.getString(4));
+                        System.out.println(BLUE+"Status: "+YELLOW+rs.getString(4)+RESET);
                     }
                     if(rs.getString(4).equals("D")){
-                        System.out.println(BLUE+"Status: "+GREEN+rs.getString(4));
+                        System.out.println(BLUE+"Status: "+GREEN+rs.getString(4)+RESET);
                     }
-                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
             }
             con.close();
@@ -104,13 +104,13 @@ public class manage {
             if (rs.next() == false) {
                 System.out.println("There are no complaints");
             } else {
-                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 do {
                     System.out.println(BLUE+"ID: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
                     System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
-                    System.out.println(BLUE+"Status: "+RED+rs.getString(4));
-                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n\n"+RESET);
+                    System.out.println(BLUE+"Status: "+RED+rs.getString(4)+RESET);
+                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
             }
             con.close();
@@ -118,10 +118,10 @@ public class manage {
             System.out.println(e);
         }
 
-        System.out.println(BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println(BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.println(YELLOW+"1"+RESET+".Edit status");
         System.out.println(YELLOW+"2"+RESET+".Exit");
-        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.print("\nEnter your choice: ");
         int choice = in.nextInt();
 
@@ -148,13 +148,13 @@ public class manage {
             if (rs.next() == false) {
                 System.out.println("There are no complaints");
             } else {
-                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 do {
                     System.out.println(BLUE+"ID: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
                     System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
-                    System.out.println(BLUE+"Status: "+YELLOW+rs.getString(4));
-                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                    System.out.println(BLUE+"Status: "+YELLOW+rs.getString(4)+RESET);
+                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
             }
             con.close();
@@ -162,10 +162,10 @@ public class manage {
             System.out.println(e);
         }
 
-        System.out.println(BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println(BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.println(YELLOW+"1"+RESET+".Edit status");
         System.out.println(YELLOW+"2"+RESET+".Exit");
-        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.print("\nEnter your choice: ");
         int choice = in.nextInt();
 
@@ -189,13 +189,13 @@ public class manage {
             if (rs.next() == false) {
                 System.out.println("There are no complaints");
             } else {
-                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 do {
                     System.out.println(BLUE+"ID: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
                     System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
-                    System.out.println(BLUE+"Status: "+GREEN+rs.getString(4));
-                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                    System.out.println(BLUE+"Status: "+GREEN+rs.getString(4)+RESET);
+                    System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
             }
             con.close();
@@ -203,10 +203,10 @@ public class manage {
             System.out.println(e);
         }
 
-        System.out.println(BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println(BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.println(YELLOW+"1"+RESET+".Edit status");
         System.out.println(YELLOW+"2"+RESET+".Exit");
-        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.print("\nEnter your choice: ");
         int choice = in.nextInt();
 
@@ -223,8 +223,8 @@ public class manage {
     private static void editstatus() {try {
         int id;
         Scanner in = new Scanner(System.in);
-        System.out.println(YELLOW_BG+"\n---------------------------------------------------------------------\n"+RESET);
-        System.out.print("Enter ID of complaint: ");
+        System.out.println(YELLOW_BG+"\n---------------------------------------------------------------------"+RESET+"\n");
+        System.out.print("\nEnter ID of complaint: ");
         id = in.nextInt();
 
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -234,19 +234,19 @@ public class manage {
         if (rs.next() == false) {
             System.out.println("You entered incorrect ID.");
         } else {
-                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 System.out.println(BLUE+"Subject: "+RESET+rs.getString(1));
                 System.out.println(BLUE+"Details: "+RESET+rs.getString(2));
                 if(rs.getString(3).equals("N")){
-                    System.out.println(BLUE+"Status: "+RED+rs.getString(3));
+                    System.out.println(BLUE+"Status: "+RED+rs.getString(3)+RESET);
                 }
                 else if(rs.getString(3).equals("U")){
-                    System.out.println(BLUE+"Status: "+YELLOW+rs.getString(3));
+                    System.out.println(BLUE+"Status: "+YELLOW+rs.getString(3)+RESET);
                 }
                 else if(rs.getString(3).equals("D")){
-                    System.out.println(BLUE+"Status: "+GREEN+rs.getString(3));
+                    System.out.println(BLUE+"Status: "+GREEN+rs.getString(3)+RESET);
                 }
-                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------\n"+RESET);
+                System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
             }
             
             System.out.println(RED+"N"+RESET+" - means your complaint is not yet assigned to anyone (Please be patient)");
@@ -258,7 +258,7 @@ public class manage {
 
             stm.executeUpdate(update);
         con.close();
-        System.out.println("\n"+YELLOW_BG+"---------------------------------------------------------------------\n"+RESET);
+        System.out.println("\n"+YELLOW_BG+"---------------------------------------------------------------------"+RESET+"\n");
         }catch(Exception e){
             System.out.println(e);
         }
