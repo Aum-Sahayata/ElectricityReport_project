@@ -66,7 +66,7 @@ public class manage {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("select id,subject,details,status from complaint;");
+            ResultSet rs = stm.executeQuery("select id,subject,report_date,details,status from complaint;");
             if (rs.next() == false) {
                 System.out.println("There are no complaints");
             } else {
@@ -74,15 +74,16 @@ public class manage {
                 do {
                     System.out.println(BLUE+"ID: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
-                    System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
-                    if(rs.getString(4).equals("N")){
-                        System.out.println(BLUE+"Status: "+RED+rs.getString(4)+RESET);
+                    System.out.println(BLUE+"Date: "+RESET+rs.getString(3));
+                    System.out.println(BLUE+"Details: "+RESET+rs.getString(4));
+                    if(rs.getString(5).equals("N")){
+                        System.out.println(BLUE+"Status: "+RED+rs.getString(5)+RESET);
                     }
-                    else if(rs.getString(4).equals("U")){
-                        System.out.println(BLUE+"Status: "+YELLOW+rs.getString(4)+RESET);
+                    else if(rs.getString(5).equals("U")){
+                        System.out.println(BLUE+"Status: "+YELLOW+rs.getString(5)+RESET);
                     }
-                    if(rs.getString(4).equals("D")){
-                        System.out.println(BLUE+"Status: "+GREEN+rs.getString(4)+RESET);
+                    if(rs.getString(5).equals("D")){
+                        System.out.println(BLUE+"Status: "+GREEN+rs.getString(5)+RESET);
                     }
                     System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
@@ -100,7 +101,7 @@ public class manage {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("select id,subject,details,status from complaint where status='N';");
+            ResultSet rs = stm.executeQuery("select id,subject,report_date,details,status from complaint where status='N';");
             if (rs.next() == false) {
                 System.out.println("There are no complaints");
             } else {
@@ -108,8 +109,9 @@ public class manage {
                 do {
                     System.out.println(BLUE+"ID: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
-                    System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
-                    System.out.println(BLUE+"Status: "+RED+rs.getString(4)+RESET);
+                    System.out.println(BLUE+"Date: "+RESET+rs.getString(3));
+                    System.out.println(BLUE+"Details: "+RESET+rs.getString(4));
+                    System.out.println(BLUE+"Status: "+RED+rs.getString(5)+RESET);
                     System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
             }
@@ -144,7 +146,7 @@ public class manage {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("select id,subject,details,status from complaint where status='U';");
+            ResultSet rs = stm.executeQuery("select id,subject,report_date,details,status from complaint where status='U';");
             if (rs.next() == false) {
                 System.out.println("There are no complaints");
             } else {
@@ -152,8 +154,9 @@ public class manage {
                 do {
                     System.out.println(BLUE+"ID: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
-                    System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
-                    System.out.println(BLUE+"Status: "+YELLOW+rs.getString(4)+RESET);
+                    System.out.println(BLUE+"Date: "+RESET+rs.getString(3));
+                    System.out.println(BLUE+"Details: "+RESET+rs.getString(4));
+                    System.out.println(BLUE+"Status: "+YELLOW+rs.getString(5)+RESET);
                     System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
             }
@@ -185,7 +188,7 @@ public class manage {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("select id,subject,details,status from complaint where status='D';");
+            ResultSet rs = stm.executeQuery("select id,subject,report_date,details,status from complaint where status='D';");
             if (rs.next() == false) {
                 System.out.println("There are no complaints");
             } else {
@@ -193,8 +196,9 @@ public class manage {
                 do {
                     System.out.println(BLUE+"ID: "+RESET+rs.getString(1));
                     System.out.println(BLUE+"Subject: "+RESET+rs.getString(2));
-                    System.out.println(BLUE+"Details: "+RESET+rs.getString(3));
-                    System.out.println(BLUE+"Status: "+GREEN+rs.getString(4)+RESET);
+                    System.out.println(BLUE+"Date: "+RESET+rs.getString(3));
+                    System.out.println(BLUE+"Details: "+RESET+rs.getString(4));
+                    System.out.println(BLUE+"Status: "+GREEN+rs.getString(5)+RESET);
                     System.out.println("\n"+WHITE_BG+"---------------------------------------------------------------------"+RESET+"\n");
                 } while (rs.next());
             }
