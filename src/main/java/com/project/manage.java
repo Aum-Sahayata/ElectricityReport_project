@@ -17,6 +17,7 @@ public class manage {
     public static final String GREEN = "\u001B[32m";
     public static final String RED_BG = "\u001B[41m";
     public static final String WHITE_BG = "\u001B[47m";
+    public static final String CYAN_BG = "\033[46m";
 
     static void menu(){
 
@@ -122,7 +123,8 @@ public class manage {
 
         System.out.println(BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.println(YELLOW+"1"+RESET+".Edit status");
-        System.out.println(YELLOW+"2"+RESET+".Exit");
+        System.out.println(YELLOW+"2"+RESET+".User's information");
+        System.out.println(YELLOW+"3"+RESET+".Exit");
         System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.print("\nEnter your choice: ");
         int choice = in.nextInt();
@@ -133,6 +135,10 @@ public class manage {
             break;
             
             case 2:
+            displayuser();
+            break;
+
+            case 3:
             break;
         }
     }
@@ -167,7 +173,8 @@ public class manage {
 
         System.out.println(BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.println(YELLOW+"1"+RESET+".Edit status");
-        System.out.println(YELLOW+"2"+RESET+".Exit");
+        System.out.println(YELLOW+"2"+RESET+".User's information");
+        System.out.println(YELLOW+"3"+RESET+".Exit");
         System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.print("\nEnter your choice: ");
         int choice = in.nextInt();
@@ -178,6 +185,10 @@ public class manage {
             break;
             
             case 2:
+            displayuser();
+            break;
+
+            case 3:
             break;
         }
     }
@@ -209,7 +220,8 @@ public class manage {
 
         System.out.println(BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.println(YELLOW+"1"+RESET+".Edit status");
-        System.out.println(YELLOW+"2"+RESET+".Exit");
+        System.out.println(YELLOW+"2"+RESET+".User's information");
+        System.out.println(YELLOW+"3"+RESET+".Exit");
         System.out.println("\n"+BLUE_BG+"---------------------------------------------------------------------"+RESET+"\n");
         System.out.print("\nEnter your choice: ");
         int choice = in.nextInt();
@@ -220,11 +232,42 @@ public class manage {
             break;
             
             case 2:
+            displayuser();
+            break;
+
+            case 3:
             break;
         }
     }
 
-    private static void editstatus() {try {
+    private static void displayuser() {
+        try {
+            int id;
+            Scanner in = new Scanner(System.in);
+            System.out.println(CYAN_BG+"\n---------------------------------------------------------------------"+RESET+"\n");
+            System.out.print("\nEnter ID of complaint: ");
+            id = in.nextInt();
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "test","JDBC@test1908");
+        Statement stm = con.createStatement();
+        ResultSet rs = stm.executeQuery("select u.name,u.phone_no,u.address from complaint as c inner join user as u on c.uid=u.id where c.id="+id);
+        if (rs.next() == false) {
+            System.out.println("You entered incorrect ID.");
+        } else {
+                System.out.println("\n"+BLUE+"Name: "+RESET+rs.getString(1));
+                System.out.println(BLUE+"Phone number: "+RESET+rs.getString(2));
+                System.out.println(BLUE+"Address: "+RESET+rs.getString(3));
+                System.out.println("\n"+CYAN_BG+"---------------------------------------------------------------------"+RESET+"\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+    private static void editstatus() {
+        try {
         int id;
         Scanner in = new Scanner(System.in);
         System.out.println(YELLOW_BG+"\n---------------------------------------------------------------------"+RESET+"\n");
